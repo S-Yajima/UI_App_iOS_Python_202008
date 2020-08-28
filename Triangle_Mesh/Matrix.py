@@ -4,12 +4,10 @@ from math import radians
 from math import degrees
 from math import isclose
 from math import sqrt
-#from math import sqrt
 
 
 # X軸三次元回転行列を返す
 # matrix : 3 * 3 の行列計算の配列
-# 				ToDo: 4*4も検討する
 # angle : x軸回転角度
 def make_Rotation_X_Matrix(matrix, angle):
 	radian = radians(angle)
@@ -25,7 +23,6 @@ def make_Rotation_X_Matrix(matrix, angle):
 
 # Y軸三次元回転行列を返す
 # matrix : 3 * 3 の行列計算の配列
-# 				ToDo: 4*4も検討する
 # angle : y軸回転角度
 def make_Rotation_Y_Matrix(matrix, angle):
 	radian = radians(angle)
@@ -41,7 +38,6 @@ def make_Rotation_Y_Matrix(matrix, angle):
 
 # Z軸三次元回転行列を返す
 # matrix : 3 * 3 の行列計算の配列
-# 				ToDo: 4*4も検討する
 # angle : z軸回転角度
 def make_Rotation_Z_Matrix(matrix, angle):
 	radian = radians(angle)
@@ -58,8 +54,6 @@ def make_Rotation_Z_Matrix(matrix, angle):
 
 # 拡大縮小行列を返す
 # matrix : 3 * 3 の行列計算の配列
-# 				ToDo: 4*4も検討する
-
 def make_Scale_Matrix(matrix, scale_x, scale_y, scale_z):
 	
 	matrix[0][0] = scale_x; matrix[0][1] = 0; matrix[0][2] = 0; matrix[0][3] = 0
@@ -71,8 +65,6 @@ def make_Scale_Matrix(matrix, scale_x, scale_y, scale_z):
 
 # 移動行列を返す
 # matrix : 3 * 3 の行列計算の配列
-# 				ToDo: 4*4も検討する
-
 def make_Translation_Matrix(matrix, trans_x, trans_y, trans_z):
 	
 	matrix[0][0] = 1; matrix[0][1] = 0; matrix[0][2] = 0; matrix[0][3] = trans_x
@@ -84,8 +76,7 @@ def make_Translation_Matrix(matrix, trans_x, trans_y, trans_z):
 
 # 行列計算
 # vertex : 頂点座標の配列[x,y,z]
-# matrix : 4 * 3 の行列計算
-# 				ToDo: 4*4も検討する
+# matrix : 3 * 3 の行列計算
 def transform3D(vertex, matrix):
 	tmp_x = vertex[0]
 	tmp_y = vertex[1]

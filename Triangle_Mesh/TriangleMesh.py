@@ -3,9 +3,10 @@ from Matrix import *
 from Indexes import *
 
 class Vector3(Structure):
-	_fields_ = [('x', c_float), 
-							('y', c_float),
-							('z', c_float)]
+	_fields_ = [
+		('x', c_float),
+		('y', c_float),
+		('z', c_float)]
 
 
 # 頂点を意味するクラス(構造体のように利用)
@@ -71,7 +72,6 @@ class MySphere():
 	# 球の半径
 	radius = 0
 	
-	# 
 	# 進行ベクトル
 	#proceed_vector = Vector3(0, 0, 0)
 	# Y軸を軸にスピンする回転角度
@@ -85,8 +85,7 @@ class MySphere():
 		
 		self.vertexes = []
 		self.triangles = []
-	
-		
+
 		self.radius = radius
 		self.center =  Vector3(0, 0, 0)
 		self.proceed_vector = Vector3(0, 0, 0)
@@ -96,14 +95,13 @@ class MySphere():
 		# 円図形の頂点を算出する
 		# ToDo : 重複する頂点座標を無くす
 		matrix = [[0, 0, 0, 0], 
-							[0, 0, 0, 0],
-							[0, 0, 0, 0]]
+					[0, 0, 0, 0],
+					[0, 0, 0, 0]]
 		
 		# 頂点座標
 		self.add_vertex(Vertex(0, -1 * radius, 0))
 		
 		for colmn in range(0, 360, step):
-			
 			for angle in range(step, 180, step):
 				# 頂点座標の x,y,z 数値を算出する
 				x = radius * cos(radians(int(angle) + 270))
@@ -124,7 +122,7 @@ class MySphere():
 		for indexes in triangle_indexes:
 			# 頂点x,y,z座標の配列を格納する
 			self.add_triangle(Triangle(indexes))
-		
+
 		self.set_center(center_x, center_y, center_z)
 	
 	
@@ -138,7 +136,6 @@ class MySphere():
 
 	# 頂点座標を全て返す
 	# 配列：[[[x,y,z],[x,y,z],[x,y,z]],[[]...
-	# 
 	def points(self):
 		result = []
 		
@@ -215,55 +212,3 @@ class MySphere():
 		self.spin_angle += 1
 
 
-
-if __name__ == '__main__':
-	
-	sphere = MySphere(100)
-	points = sphere.points()
-	
-	#print(points)
-	print(len(points))
-	print(len(points[0]))
-	print(len(sphere.triangles))
-	print(len(sphere.vertexes))
-	
-	#print('_________')
-	#local_points = sphere.local_points()
-	#print(local_points)
-	#print('_________')
-	#print(points)
-	'''
-	for vertex in sphere.triangle_mesh.vertexes:
-		print(vertex.point.x, vertex.point.y, vertex.point.z)
-	'''
-	'''
-	for vertex in sphere.triangle_mesh.vertexes:
-		print(vertex.point.x, vertex.point.y, vertex.point.z)
-	'''
-	
-	'''
-	radius = 10
-	angle = 0
-	x = radius * cos(radians(int(angle) + 270))
-	y = radius * sin(radians(int(angle) + 270))
-	print('_______')
-	print(cos(radians(0)))
-	print(round(cos(radians(90)), 10))
-	print(cos(radians(180)))
-	print(round(cos(radians(270)), 10))
-	print(cos(radians(360)))
-	
-	print(x, y)
-	'''
-	'''
-	vertex = Vertex(1.1, 2.2, 3.3)
-	print(vertex.point.x)
-	print(vertex.point.y)
-	print(vertex.point.z)
-	
-	
-	test = Vertex()
-	print(test.point.x)
-	print(test.point.y)
-	print(test.point.z)
-	'''

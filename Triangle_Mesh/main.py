@@ -174,12 +174,9 @@ class BaseView(ui.View):
 		# (光源光量 * (反射光と視線の角度cosθ**鏡面度) / 距離の二乗
 		# reflect_cos 反射光と視線のなす角度(cos)
 		# 0未満: 光が鋭角で、当たっている
-		#specular_light_value = (brightness * ((-1*reflect_cos)**specular)) / light_length
 		specular_value = 0
 		if specular_inner < 0:
 			specular_value = (brightness * ((-1*specular_inner)**specular)) / light_length
-		
-		#value = diffused_value + specular_value
 		
 		# 反射率 RGB
 		r_ref, g_ref, b_ref = (1.0, 1.0, 1.0)
