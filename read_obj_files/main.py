@@ -78,7 +78,7 @@ class BaseView(ui.View):
 	light_z = 300
 	
 	
-	# 球を追加する
+	# 物体を追加する
 	def add_figure(self, figure):
 		if isinstance(figure, MyFigure) is True:
 			self.figures.append(figure)
@@ -109,7 +109,7 @@ class BaseView(ui.View):
 
 	
 	# sort
-	# ビュー変換後の座標で、視点からの距離の値を比較しソートを行う
+	# ビュー変換後の座標で、視点からの距離の値を比較し三角ポリゴンのソートを行う
 	def sort_triangle(self, corners):
 		camera_x, camera_y, camera_z = self.camera.camera_rotation(
 			self.camera.camera_x, self.camera.camera_y, self.camera.camera_z)
@@ -128,7 +128,7 @@ class BaseView(ui.View):
 		return length
 	
 	
-	# 球のソート
+	# 図形のソート
 	def sort_figure(self, figure):
 		camera_x, camera_y, camera_z = self.camera.camera_rotation(
 			self.camera.camera_x, self.camera.camera_y, self.camera.camera_z)
@@ -163,7 +163,7 @@ class BaseView(ui.View):
 		# 光源
 		light_x ,light_y ,light_z = self.light_point()
 		light_x ,light_y ,light_z = self.camera.camera_rotation(light_x ,light_y ,light_z)
-		
+		# カメラ位置のビュー座標
 		camera_x ,camera_y ,camera_z = self.camera.camera_rotation(
 			self.camera.camera_x, 
 			self.camera.camera_y, 
