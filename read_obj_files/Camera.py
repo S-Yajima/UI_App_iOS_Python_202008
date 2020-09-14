@@ -1,9 +1,7 @@
 from Matrix import *
 
-# 床。タイルにする。
 class  MyCamera():
-	
-	#camera vector
+
 	camera_x = 0		# カメラの位置座標
 	camera_y = 0
 	camera_z = 0
@@ -16,7 +14,6 @@ class  MyCamera():
 	CPX = 0					# カメラ座標とカメラX軸との内積
 	CPY = 0
 	CPZ = 0
-	# camera vector
 	
 	
 	# カメラの位置座標を設定する
