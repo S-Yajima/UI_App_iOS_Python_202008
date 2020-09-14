@@ -51,7 +51,11 @@ def ui_color(color, light_inner, light_length=1, brightness=1, specular=0, specu
 
 
 # フォグを反映した色を算出
-# 
+# color : フォグ算出前の色 [r, g, b]
+# distance : 対象物までの距離
+# fog_color : フォグの色 [r, g, b]
+# max_distance : 対象物がフォグの色になる距離
+# min_distance : 対象物にフォグがかかり始める距離
 def color_with_fog(color, distance, fog_color, max_distance, min_distance):
 	fogged_color = [color[0], color[1], color[2]]
 	

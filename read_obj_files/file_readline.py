@@ -1,8 +1,9 @@
 
-# line ファイル読み込み結果の二次元配列
-# return 二次元配列
+# line ファイル読み込み結果の二次元配列(各行の内容はスペース区切りで配列化されている)
+#  > [1行目のファイル内容, 2行目のファイル内容,...]
+# return 二次元配列 [[x,y,z],[x,y,z],[x,y,z],...]
 # 頂点座標xyzを含む二次元配列を返す
-# ToDo 0の近似値が不測の値になるので対応する
+# ToDo 0の近似値が不測の値になるので余力があれば対応する
 def vertex_list(lines):
 	result = []
 	for colmn in lines:
@@ -17,8 +18,9 @@ def vertex_list(lines):
 	
 
 # line ファイル読み込み結果の二次元配列
-# return 二次元配列
+#  > [1行目のファイル内容, 2行目のファイル内容,...]
 # 頂点インデックス番号を含む二次元配列を返す
+#  > return 二次元配列 [[頂点aのindex,頂点bのindex,頂点cのindex],[頂点aのindex,頂点bのindex,頂点cのindex],,...]
 def triangle_list(line):
 	result = []
 	for colmn in line:
@@ -41,7 +43,7 @@ def triangle_list(line):
 	
 
 # path 読み込むファイルのパス
-# return ファイル内容の二次元配列
+# return ファイル内容の二次元配列(各行をスペースで区切り２次元配列にする)
 # ['v', '-1.76', '-3.13', '1.00'], ['v', '-1.76', '-3.06', '1.00'], ['v', '-1.56', '-2.82', '1.00']
 def read_file_line(path):
 	
@@ -77,14 +79,10 @@ def read_file_line(path):
 	
 	finally:
 		return output
-	
-	
-	
+
 
 if __name__ == '__main__':
-	
-	# ToDo 例外処理
-	
+
 	#path = '2_vertex.txt'
 	path = '4_vertex.txt'
 	line = read_file_line(path)

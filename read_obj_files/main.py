@@ -341,8 +341,8 @@ def change_view_y_schedule(main_view, goal_y, add_y, lock):
 
 
 # カメラが外周を円旋回する
-# angle : 
-# goal_angle : 
+# angle : 開始カメラアングル
+# goal_angle : 移動終了時のカメラアングル
 def change_view_round_schedule(main_view, angle, goal_angle, lock):
 	
 	if isinstance(main_view, BaseView) is False:
@@ -404,7 +404,8 @@ def round_figure_schedule(main_view, figure, angle, add_angle, r, lock):
 	
 
 # 目的地座標に移動する
-# goal_point 目的地座標xyz
+# goal_point : 目的地座標xyz
+# frame : 移動に要するコマ数。少ないほど速く移動する。
 def set_proceed_figure(figure, goal_point, frame, lock):
 	if isinstance(figure, MyFigure) is False:
 		return
@@ -427,7 +428,8 @@ def set_proceed_figure(figure, goal_point, frame, lock):
 
 
 # 目的地座標に移動する
-# goal_point 目的地座標 xyz
+# figure : 移動対象の図形
+# goal_point : 目的地座標 xyz
 def proceed_figure(figure, goal_point, lock):
 	if isinstance(figure, MyFigure) is False:
 		return
@@ -500,8 +502,8 @@ def rotate_Z_figure_order(figures, index, lock):
 	
 	
 # 時計の針を回転させる
-# figures: 数字の配列
-# infex : 処理対象の配列figuresのインデックス番号
+# needle_l: 分針
+# needle_s : 時針
 def rotate_needles(needle_l, needle_s, lock):
 	
 	if isinstance(needle_l, MyFigure) is False or isinstance(needle_s, MyFigure) is False:
@@ -564,13 +566,8 @@ if __name__ == '__main__':
 	# 床
 	floor = MyFloor(-420, 200, 150)
 	main_view.set_floor(floor)
-	
-	
-	
-	# test
+
 	# 1から12まで3Dの数字を生成し配置する
-	# TODO:円になるように配置する
-	# 色の決め方考える　modか？
 	center_x = main_view.camera.lookat_x
 	center_y = main_view.camera.lookat_y
 	center_z = main_view.camera.lookat_z
@@ -590,7 +587,6 @@ if __name__ == '__main__':
 	numbers = []
 	for i in range(1, 13):
 		filename = str(i) + '.obj'
-		#print(filename)
 		radian = radians(i * 30 + 270)
 		x = cos(radian) * radius + center_x
 		y = sin(radian) * radius + center_y

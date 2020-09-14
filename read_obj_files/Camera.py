@@ -66,6 +66,7 @@ class  MyCamera():
 		
 	
 	# ビュー座標回転
+	# x, y, z : 回転前の座標 x, y, z
 	def camera_rotation(self, x, y, z):
 		CXV = self.CXV	# ビュー座標のxyz軸ベクトル
 		CYV = self.CYV
@@ -87,6 +88,7 @@ class  MyCamera():
 		
 	
 	# 複数の座標をビュー変換して配列で返す
+	# points : [[x, y, z],[x, y, z],[x, y, z],...] (二次元配列)
 	def view_conversion(self, points):
 		view_points = []
 		
