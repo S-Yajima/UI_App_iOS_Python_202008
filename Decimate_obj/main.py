@@ -573,12 +573,12 @@ if __name__ == '__main__':
 	center_z = main_view.camera.lookat_z
 	radius = 350
 	
-	needle_l = MyFigure('hari_l.obj')
+	needle_l = MyFigure('./obj/hari_l.obj')
 	needle_l.set_center(0, center_y, -250)
 	needle_l.set_face_color(0.5, 0.5, 0.5)
 	main_view.add_figure(needle_l)
 	
-	needle_s = MyFigure('hari_s.obj')
+	needle_s = MyFigure('./obj/hari_s.obj')
 	needle_s.set_center(0, center_y, -250)
 	needle_s.set_face_color(0.5, 0.5, 0.5)
 	main_view.add_figure(needle_s)
@@ -586,7 +586,7 @@ if __name__ == '__main__':
 	
 	numbers = []
 	for i in range(1, 13):
-		filename = str(i) + '.obj'
+		filename = './obj/' + str(i) + '.obj'
 		radian = radians(i * 30 + 270)
 		x = cos(radian) * radius + center_x
 		y = sin(radian) * radius + center_y
