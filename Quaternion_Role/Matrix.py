@@ -24,6 +24,8 @@ def multipl_Matrix(mat_a, mat_b):
 
 
 # 四元数の要素の値を作り4次元配列で返す
+# theta : 回転角度
+# x, y, z : 回転軸の3次元単位ベクトル
 # 戻り値 : 単位四元数[w,x,y,z] (cosθ/2, sinθ/2*x, sinθ/2*y, sinθ/2*z)
 def quaternion_v4(theta, x, y, z):
 	quat_v4 = [0] * 4
