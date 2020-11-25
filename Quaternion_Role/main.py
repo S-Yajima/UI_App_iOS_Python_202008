@@ -492,7 +492,7 @@ def change_view_y_schedule(main_view, goal_y, add_y, lock):
 # カメラが外周を円旋回する
 # angle : 開始カメラアングル
 # add_angle : 移動毎のカメラアングル移動角度
-# count : 残りの処理回数
+# count : 残りの処理回数　０まで繰り返す。
 def change_view_round_schedule(main_view, angle, add_angle, count, lock):
 	
 	if isinstance(main_view, BaseView) is False:
@@ -583,9 +583,7 @@ def proceed_figure(figure, goal_point, lock):
 # pole : クオータニオン回転軸を表現する棒
 # diff_x, diff_y, diff_z : 
 # クオータニオン回転軸の回転角度移動量
-# count : 残りの処理回数。
-# 当メソッドが実行される度にデクリメントされる。
-# 0になるまで繰り返す。
+# count : 残りの処理回数。 当メソッドが実行される度にデクリメントされる。 0になるまで繰り返す。
 def modefy_Quat_Axis_Angle_order(
 	main_view, pole, diff_x, diff_y, diff_z, count, lock):
 	if isinstance(main_view, BaseView) is False:
@@ -831,7 +829,7 @@ if __name__ == '__main__':
 	#main_view.set_light(MyFigure('./obj/bou.obj', is_hide=True))
 	main_view.light_x = 100
 	
-	# 棒
+	# 棒。クオータニオン回転軸を表現する。
 	pole = MyPole('./obj/pole.obj')
 	pole.set_center(0, 0, 0)
 	pole.set_face_color(0.0, 0.0, 0.0)
@@ -925,13 +923,6 @@ if __name__ == '__main__':
 	ta_4 = threading.Timer(delay, modefy_Quat_Axis_Angle_order, args=[main_view, pole, 0, 0, -1, 45, lock])
 	ta_4.start()
 	
-	'''
-	# 視点移動　上昇
-	delay += 2.0
-	tv4 = threading.Timer(delay, change_view_y_schedule, args=[main_view, -400, -4, lock])
-	tv4.start()
-	'''
-	
 	# 回転軸を動かす
 	delay += 7.0
 	ta_5 = threading.Timer(delay, modefy_Quat_Axis_Angle_order, args=[main_view, pole, -1, 0, 0, 25, lock])
@@ -946,13 +937,6 @@ if __name__ == '__main__':
 	delay += 7.0
 	ta_7 = threading.Timer(delay, modefy_Quat_Axis_Angle_order, args=[main_view, pole, -1, 0, 0, 25+90, lock])
 	ta_7.start()
-	
-	'''
-	# 回転軸を動かす
-	delay += 7.0
-	ta_8 = threading.Timer(delay, modefy_Quat_Axis_Angle_order, args=[main_view, pole, -1, 0, 0, 25, lock])
-	ta_8.start()
-	'''
 	
 	# 再描画
 	td = threading.Timer(0.01, display_schedule, args=[main_view, lock])
