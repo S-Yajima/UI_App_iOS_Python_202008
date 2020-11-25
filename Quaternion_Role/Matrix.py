@@ -23,7 +23,8 @@ def multipl_Matrix(mat_a, mat_b):
 	return new_mat
 
 
-# 四元数の要素の値を作り配列で返す
+# 四元数の要素の値を作り4次元配列で返す
+# 戻り値 : 単位四元数[w,x,y,z] (cosθ/2, sinθ/2*x, sinθ/2*y, sinθ/2*z)
 def quaternion_v4(theta, x, y, z):
 	quat_v4 = [0] * 4
 	
@@ -39,7 +40,7 @@ def quaternion_v4(theta, x, y, z):
 
 
 # クオータニオンにて回転を行う行列を作成し返す
-# quat_v4 : 単位四元数[w,x,y,z]
+# quat_v4 : 単位四元数[w,x,y,z] (cosθ/2, sinθ/2*x, sinθ/2*y, sinθ/2*z)
 def make_Quaternion_Matrix(quat_v4):
 	matrix = [[0] * 4 for i in range(4)]
 	
@@ -77,25 +78,6 @@ def make_Quaternion_Matrix(quat_v4):
 	matrix[3][1] = 0
 	matrix[3][2] = 0
 	matrix[3][3] = 1
-	
-	'''
-	matrix[0][0] = 1 - 2 * (q_yy - q_zz)
-	matrix[0][1] = 2 * (q_xy + q_zw)
-	matrix[0][2] = 2 * (q_zx - q_yw)
-	matrix[0][3] = 0
-	matrix[1][0] = 2 * (q_xy - q_zw)
-	matrix[1][1] = 1 - 2 * (q_zz - q_xx)
-	matrix[1][2] = 2 * (q_yz + q_xw)
-	matrix[1][3] = 0
-	matrix[2][0] = 2 * (q_zx + q_yw)
-	matrix[2][1] = 2 * (q_yz - q_xw)
-	matrix[2][2] = 1 - 2 * (q_xx - q_yy)
-	matrix[2][3] = 0
-	matrix[3][0] = 0
-	matrix[3][1] = 0
-	matrix[3][2] = 0
-	matrix[3][3] = 1
-	'''
 	
 	return matrix
 	
